@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import MissionFooter from '@/components/MissionFooter';
 import './complete-site.css';
 import './mission-end.css';
 import './mission-stories.css';
@@ -9,5 +10,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body>{children}</body></html>;
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <MissionFooter />
+      </body>
+    </html>
+  );
 }

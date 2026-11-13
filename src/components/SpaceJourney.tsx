@@ -6,7 +6,6 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import EarthGlobe from './EarthGlobe';
 import MissionFaq from './MissionFaq';
-import MissionFooter from './MissionFooter';
 import MissionLink from './MissionLink';
 import MissionStories from './MissionStories';
 import MissionChapters from './MissionChapters';
@@ -119,7 +118,6 @@ export default function SpaceJourney() {
       </div>
     </section>
     <HealthSections />
-    <MissionFooter />
   </div>;
 }
 

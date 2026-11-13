@@ -7,10 +7,10 @@ export default function MissionFooter() {
     <footer className="mission-footer">
       <div className="mission-footer-main">
         <div className="mission-footer-feature">
-          <a className="mission-footer-brand" href="#moon">
+          <Link className="mission-footer-brand" href="/#moon">
             <LuOrbit aria-hidden="true" />
             BEYOND
-          </a>
+          </Link>
           <p>Farther into space.<br />Closer to the human.</p>
           <MissionLink href="/crew-health#body">Explore the body</MissionLink>
         </div>
@@ -18,13 +18,13 @@ export default function MissionFooter() {
           <div>
             <h2>Explore</h2>
             <ul>
-              <li><a href="#moon">The mission</a></li>
+              <li><Link href="/#moon">The mission</Link></li>
               <li><Link href="/crew-health">Crew health</Link></li>
               <li><Link href="/crew-health#daily-log">Daily records</Link></li>
               <li><Link href="/crew-health#signals">Health trends</Link></li>
-              <li><a href="#how-it-works">How it works</a></li>
-              <li><a href="#mission-briefing">Mission briefing</a></li>
-              <li><a href="#questions">Questions</a></li>
+              <li><Link href="/#how-it-works">How it works</Link></li>
+              <li><Link href="/#mission-briefing">Mission briefing</Link></li>
+              <li><Link href="/#questions">Questions</Link></li>
             </ul>
           </div>
           <div>
@@ -39,7 +39,7 @@ export default function MissionFooter() {
       </div>
       <div className="mission-footer-meta">
         <p>Independent hackathon concept · simulated health records</p>
-        <MissionLink href="#moon">Back to top</MissionLink>
+        <MissionLink href="#top">Back to top</MissionLink>
       </div>
     </footer>
   );
