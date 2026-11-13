@@ -16,7 +16,7 @@
   background: #191919;
   color: #ededed;
   color-scheme: dark;
-  outline: 1px solid #ffffff40;
+  outline: 1px solid transparent;
   outline-offset: 2px;
   transition: outline-offset 180ms ease, outline-color 180ms ease, background-color 180ms ease;
 }
@@ -92,13 +92,14 @@
   accent-color: #d4d4d4;
 }
 
-.field :is(input, select, textarea):enabled:is(:hover, :focus) {
-  outline-color: #a3a3a3;
-  outline-offset: 5px;
+@media (hover: hover) {
+  .field :is(input, select, textarea):enabled:hover {
+    outline-color: #a3a3a3;
+    outline-offset: 5px;
+  }
 }
 
 .field :is(input, select, textarea):focus {
-  outline-color: #e2e2e2;
   background: #303030;
 }
 
