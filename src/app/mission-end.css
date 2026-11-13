@@ -1,9 +1,10 @@
 .mission-faq-item {
-  border-block-start: 1px solid #ffffff30;
+  border: 1px solid #ffffff26;
+  background: #0a0d0b;
 }
 
-.mission-faq-item:last-child {
-  border-block-end: 1px solid #ffffff30;
+.mission-faq-item + .mission-faq-item {
+  margin-top: 8px;
 }
 
 .mission-faq-item h3 {
@@ -44,15 +45,11 @@
   width: 34px;
   height: 34px;
   padding: 7px;
-  border: 1px solid #c7d4c84d;
-  border-radius: 50%;
-  transition: transform 250ms ease, background-color 250ms ease, color 250ms ease;
+  transition: transform 250ms ease;
 }
 
 .mission-faq-item[data-open='true'] .mission-faq-toggle {
   transform: rotate(45deg);
-  background: #c7d4c8;
-  color: #101512;
 }
 
 .mission-faq-answer {
@@ -127,18 +124,33 @@
 }
 
 .mission-footer-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 24px;
-  padding: 13px 16px;
-  background: #c7d4c8;
-  color: #101512;
-  font-size: 14px;
-  transition: background-color 180ms ease;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(100%, 320px);
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid #ffffff30;
+  background:
+    linear-gradient(0deg, #000e, #0006),
+    #111413 url('/images/crew-health.jpg') center 42% / cover no-repeat;
+  color: #fff;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.2;
+  transition: border-color 180ms ease;
 }
 
 .mission-footer-cta:hover {
-  background: #e0ebe1;
+  border-color: #c7d4c8;
+}
+
+.mission-footer-cta svg {
+  transition: transform 180ms ease;
+}
+
+.mission-footer-cta:hover svg {
+  transform: translateX(3px);
 }
 
 .mission-footer-nav {
@@ -175,6 +187,17 @@
   min-height: 24px;
   font-size: 14px;
   line-height: 1.35;
+}
+
+.mission-footer-meta a {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #ffffff26;
+  background: #111413;
+}
+
+.mission-footer-meta a:hover {
+  border-color: #c7d4c8;
 }
 
 .mission-footer a:hover:not(.mission-footer-cta) {
@@ -227,7 +250,12 @@
   .mission-faq-item button,
   .mission-faq-toggle,
   .mission-faq-answer,
-  .mission-footer-cta {
+  .mission-footer-cta,
+  .mission-footer-cta svg {
     transition: none;
+  }
+
+  .mission-footer-cta:hover svg {
+    transform: none;
   }
 }
