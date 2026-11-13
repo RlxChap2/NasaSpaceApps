@@ -1,0 +1,172 @@
+:is(a, button).mission-link {
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  align-items: stretch;
+  min-width: min(100%, 236px);
+  min-height: 42px;
+  padding: 0;
+  border: 0;
+  outline: 1px solid #e2e2e2;
+  outline-offset: 2px;
+  background: #e2e2e2;
+  color: #010101;
+  font-size: 15px;
+  line-height: 1.25;
+  text-align: center;
+  transition: background-color 180ms ease, outline-offset 180ms ease;
+}
+
+.mission-link > span {
+  display: grid;
+  place-items: center;
+  padding: 8px 12px;
+}
+
+button.mission-link:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.mission-link > .mission-link-icon {
+  padding: 0;
+  border-inline-start: 1px solid #01010159;
+}
+
+.mission-link-icon svg {
+  transition: transform 220ms ease;
+}
+
+:is(a, button).mission-link:hover:where(:not(:disabled)) {
+  background: #fff;
+  outline-offset: 4px;
+}
+
+.mission-link:hover:where(:not(:disabled)) svg {
+  transform: rotate(90deg);
+}
+
+:is(a, button).mission-link:focus-visible {
+  outline: 2px solid #d4d4d4;
+  outline-offset: 5px;
+}
+
+.mission-stories {
+  position: relative;
+  display: grid;
+  gap: clamp(44px, 9vw, 140px);
+}
+
+.mission-story {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  align-items: center;
+  gap: clamp(24px, 6vw, 100px);
+}
+
+.mission-story:nth-child(even) {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+}
+
+.mission-story:nth-child(even) .mission-story-photo {
+  order: 1;
+  width: 85%;
+  justify-self: end;
+  aspect-ratio: 4 / 5;
+}
+
+.mission-story-photo {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  aspect-ratio: 3 / 2;
+  border: 1px solid #ffffff30;
+  background: #131313;
+}
+
+.mission-story-photo img {
+  object-fit: cover;
+}
+
+.mission-story-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #0005, transparent 62%);
+}
+
+.mission-story-copy {
+  max-width: 490px;
+}
+
+.mission-story-copy .card-category {
+  text-transform: uppercase;
+}
+
+.mission-story-copy h3 {
+  margin: 0;
+  font-size: clamp(29px, 4vw, 62px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.mission-story-copy > p:last-child {
+  margin: 24px 0 0;
+  color: #bfbfbf;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .mission-story,
+  .mission-story:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-story:nth-child(even) .mission-story-photo {
+    order: 0;
+    width: 78%;
+  }
+
+  .mission-story-copy > p:last-child {
+    margin-top: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .mission-story-photo {
+      view-timeline-name: --mission-photo;
+      animation: mission-photo-reveal linear both;
+      animation-timeline: --mission-photo;
+      animation-range: entry 0% entry 85%;
+    }
+
+    .mission-story-photo img {
+      animation: mission-photo-drift linear both;
+      animation-timeline: --mission-photo;
+      animation-range: cover;
+    }
+  }
+}
+
+@keyframes mission-photo-reveal {
+  from { clip-path: inset(15% 12% 20% 0); opacity: .55; }
+  to { clip-path: inset(0); opacity: 1; }
+}
+
+@keyframes mission-photo-drift {
+  from { transform: translateY(-4%) scale(1.12); }
+  to { transform: translateY(4%) scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(a, button).mission-link,
+  .mission-link-icon svg {
+    transition: none;
+  }
+
+  .mission-link:hover:where(:not(:disabled)) svg {
+    transform: none;
+  }
+}
