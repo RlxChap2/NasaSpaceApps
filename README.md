@@ -1,14 +1,14 @@
 # BEYOND | NASA Space Apps
 
-تجربة ويب تفاعلية لاستكشاف صحة رواد الفضاء والظروف التي تؤثر على حياتهم خارج الأرض. تشمل رحلة إلى القمر، ونموذجاً تشريحياً ثلاثي الأبعاد، وسجلات صحية تعليمية تحاكي بيانات الطاقم.
+BEYOND is an interactive web experience about astronaut health and life beyond Earth. Explore the Moon, examine a 3D anatomy model, and browse simulated crew health records.
 
-## المتطلبات
+## Requirements
 
-- Node.js ‏20.9 أو أحدث مع npm.
-- Git لتنزيل المشروع بالأوامر، أو ملف ZIP من GitHub.
-- متصفح يدعم WebGL للمشاهد ثلاثية الأبعاد.
+- Node.js 20.9 or later with npm.
+- Git to clone the repository. You can also download a ZIP from GitHub.
+- A browser with WebGL support for the 3D scenes.
 
-## تنزيل المشروع وتثبيته
+## Download and install
 
 ```bash
 git clone https://github.com/RlxChap2/NasaSpaceApps.git
@@ -16,27 +16,27 @@ cd NasaSpaceApps
 npm ci
 ```
 
-يمكنك أيضاً تنزيل **Code → Download ZIP** من صفحة المستودع، وفك الضغط، وفتح الطرفية داخل المجلد الناتج، ثم تشغيل `npm ci`.
+To download without Git, choose **Code → Download ZIP** on GitHub, extract the archive, open a terminal in the extracted folder, and run `npm ci`.
 
-## التشغيل محلياً
+## Run locally
 
 ```bash
 npm run dev
 ```
 
-افتح [http://localhost:3847](http://localhost:3847). صفحة [صحة الطاقم](http://localhost:3847/crew-health) تعرض النموذج التشريحي والسجلات اليومية.
+Open [http://localhost:3847](http://localhost:3847). The [Crew Health page](http://localhost:3847/crew-health) includes the anatomy model and daily crew records.
 
-## بناء نسخة الإنتاج وتشغيلها
+## Build and run for production
 
 ```bash
 npm run build
 npm start
 ```
 
-تعمل نسخة الإنتاج أيضاً على المنفذ `3847`. لفحص الشيفرة شغّل `npm run lint`.
+The production server also runs on port `3847`. Run `npm run lint` to check the code.
 
-## مصادر الأصول
+## Asset credits
 
-- [صور وفيديو NASA](public/images/NASA-MEDIA.md)
-- [ترخيص النماذج التشريحية](public/models/anatomy/LICENSE.md)
-- [مصادر نموذج الخوذة](public/models/helmet/ATTRIBUTION.md)
+- [NASA images and video](public/images/NASA-MEDIA.md)
+- [Anatomy model licenses](public/models/anatomy/LICENSE.md)
+- [Helmet model attribution](public/models/helmet/ATTRIBUTION.md)
