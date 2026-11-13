@@ -1,0 +1,224 @@
+[
+  {
+    "id": "1",
+    "slug": "beldash",
+    "title": "Beldash Book Store",
+    "subtitle": "High-Volume E-Commerce Platform & Sales Management API",
+    "category": "Full-Stack Web · Distributed Architecture",
+    "year": "2026 - 2027",
+    "client": "Beldash",
+    "role": "Lead Full-Stack Architect & API Engineer",
+    "description": "An enterprise-grade e-commerce bookstore and sales engine featuring a high-performance Next.js frontend coupled with a robust microservices backend handling real-time inventory, BullMQ task queues, Socket.IO updates, and automated ZainCash & Mastercard payment settlements.",
+    "liveUrl": "https://beldash.com",
+    "coverImage": "/1.png",
+    "images": [
+      "/1.png",
+      "/9.png",
+      "/10.png",
+      "/11.png",
+      "/12.png"
+    ],
+    "services": [
+      "Full-Stack Web Architecture",
+      "Realtime API & Socket.IO Services",
+      "Redis & BullMQ Background Queue Engine",
+      "Payment Gateway Settlements (ZainCash & Cards)",
+      "Database Modeling & Performance Tuning"
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB & Mongoose",
+      "Redis & BullMQ",
+      "Socket.IO",
+      "TailwindCSS",
+      "Radix UI",
+      "Framer Motion"
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "roqi-emaar",
+    "title": "Roqi Emaar Al Mustaqbal",
+    "subtitle": "Dual-System Suite: Public Property Portal & Enterprise Operations Dashboard",
+    "category": "Enterprise Systems · Full-Stack & Realtime APIs",
+    "year": "2026 - 2027",
+    "client": "Roqi Emaar Al Mustaqbal",
+    "role": "Lead Full-Stack Architect & Systems Engineer",
+    "description": "A comprehensive dual-system digital ecosystem engineered for premier real estate operations encompassing a high-converting public property discovery portal alongside an enterprise-grade administration dashboard powered by a realtime WebSocket and Redis API.",
+    "liveUrl": "https://roqiemaaralmustaqbal.com/",
+    "coverImage": "/2.png",
+    "images": [
+      "/2.png",
+      "/13.png",
+      "/14.png",
+      "/15.png"
+    ],
+    "services": [
+      "Public Property Portal & UI/UX Architecture",
+      "Enterprise Operations Dashboard",
+      "Realtime WebSocket Engine & Redis Caching ",
+      "Multi-Database Architecture (MongoDB & PostgreSQL)",
+      "PDF Report Generation & Role-Based Access Control"
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Redis",
+      "WebSockets (ws)",
+      "MongoDB",
+      "PostgreSQL",
+      "TanStack Query",
+      "Radix UI",
+      "Framer Motion",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "maher-art",
+    "title": "Maher Adnan",
+    "subtitle": "Creative Design Portfolio & Typography Lab",
+    "category": "Creative Direction · Web Portfolio",
+    "year": "2026 - 2027",
+    "client": "Maher Adnan",
+    "role": "Graphic Designer & Frontend Developer",
+    "description": "An award-caliber creative portfolio celebrating visual design, branding identity, and bespoke typography with interactive micro-animations.",
+    "liveUrl": "https://rioo.my",
+    "coverImage": "/3.png",
+    "images": [
+      "/3.png",
+      "/8.png"
+    ],
+    "services": [
+      "Art Direction & Branding",
+      "Web Portfolio Architecture",
+      "Micro-Interactions & Animation"
+    ],
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "CSS Modules",
+      "Framer Motion"
+    ]
+  },
+  {
+    "id": "4",
+    "slug": "al-shayea",
+    "title": "Al-Shayea Express Logistics",
+    "subtitle": "High-Impact Logistics Landing Experience & Interactive Flow",
+    "category": "Frontend Development · Motion & Interaction",
+    "year": "2026 - 2027",
+    "client": "Al-Shayea Express (شايع للتوصيل السريع)",
+    "role": "Creative Frontend Developer & UI/UX Designer",
+    "description": "A high-conversion interactive landing platform engineered for Al-Shayea Express Logistics. Featuring fluid 60fps scroll micro-animations, service showcase modules, delivery pricing calculators, and responsive mobile-first typography.",
+    "liveUrl": "http://31.97.34.227:2101/",
+    "coverImage": "/5.png",
+    "images": [
+      "/5.png",
+      "/16.png",
+      "/17.png"
+    ],
+    "services": [
+      "Creative Frontend Development",
+      "Interactive Micro-Animations & Motion Design",
+      "Mobile-First Responsive Layouts",
+      "Asset & Performance Optimization"
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TailwindCSS",
+      "Framer Motion"
+    ]
+  },
+  {
+    "id": "5",
+    "slug": "nst",
+    "title": "NST Management Suite",
+    "subtitle": "Enterprise Operations Dashboard & High-Concurrency Cloud API",
+    "category": "Enterprise Systems · Realtime Analytics & APIs",
+    "year": "2026 - 2027",
+    "client": "NST",
+    "role": "Principal Systems Architect & Full-Stack Engineer",
+    "description": "An enterprise administration dashboard and distributed microservices API engineered for high-concurrency operations, granular role-based access control, live Recharts analytics, Redis caching, and real-time WebSocket communication.",
+    "coverImage": "/6.png",
+    "liveUrl": "https://nstdoc.com",
+    "images": [
+      "/6.png",
+      "/18.png",
+      "/19.png"
+    ],
+    "services": [
+      "Enterprise Realtime Dashboard",
+      "High-Concurrency Cloud API & WebSocket Engine",
+      "Role-Based Authentication & Access Control",
+      "Redis In-Memory Caching & Session Management",
+      "Realtime Metrics & Dynamic Data Visualizations"
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Redis",
+      "WebSockets (ws)",
+      "MongoDB & Mongoose",
+      "Recharts",
+      "Radix UI",
+      "Framer Motion",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "id": "6",
+    "slug": "dealerbot",
+    "title": "DealerBot Discord Bot",
+    "subtitle": "Multi-Cluster Discord Bot Infrastructure, Realtime API & Management Dashboard",
+    "category": "Distributed Architecture · Discord Bots & Realtime APIs",
+    "year": "2026 - 2027",
+    "client": "DealerBot (dealerb.xyz)",
+    "role": "Lead Distributed Systems Architect & Full-Stack Engineer",
+    "description": "A high-scale distributed platform composed of an interactive Next.js management dashboard, a secure Express & Redis WebSocket API gateway, and a multi-process hybrid-sharded Discord bot handling high concurrency, dynamic Canvas card rendering, and automated server operations.",
+    "liveUrl": "https://dealerb.xyz",
+    "coverImage": "/4.png",
+    "images": [
+      "/4.png",
+      "/4.png",
+      "/20.png",
+      "/21.png",
+      "/22.png"
+    ],
+    "services": [
+      "Interactive Server Management Dashboard",
+      "High-Concurrency API Gateway & Discord OAuth2",
+      "Multi-Process Hybrid Sharding Engine",
+      "Redis In-Memory Event Queues & Caching Layer",
+      "Dynamic Canvas Graphic Banners & Card Rendering"
+    ],
+    "stack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Discord.js v14",
+      "Discord Hybrid Sharding",
+      "Redis & ioredis",
+      "WebSockets (ws)",
+      "MongoDB & Mongoose",
+      "Canvas & Sharp",
+      "Recharts",
+      "Radix UI",
+      "TailwindCSS",
+      "Framer Motion"
+    ]
+  }
+]

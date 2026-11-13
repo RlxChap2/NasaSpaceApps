@@ -1,0 +1,518 @@
+{
+  "version": 2,
+  "width": 200,
+  "height": 150,
+  "gazeColumns": 6,
+  "gazeRows": 7,
+  "gazeCount": 42,
+  "blinkCount": 25,
+  "total": 67,
+  "uniqueFiles": 67,
+  "baseUrl": "/assets/astronaut-eyes/v2/",
+  "note": "Generated frames. Gaze coordinates are intended grid positions, not measured eyeball rotations. Not motion-captured; minor registration and gaze variations remain.",
+  "frames": [
+    {
+      "file": "gaze/gaze-000.png",
+      "kind": "gaze",
+      "index": 0,
+      "row": 0,
+      "column": 0,
+      "targetX": -1,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-001.png",
+      "kind": "gaze",
+      "index": 1,
+      "row": 0,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-002.png",
+      "kind": "gaze",
+      "index": 2,
+      "row": 0,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-003.png",
+      "kind": "gaze",
+      "index": 3,
+      "row": 0,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-004.png",
+      "kind": "gaze",
+      "index": 4,
+      "row": 0,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-005.png",
+      "kind": "gaze",
+      "index": 5,
+      "row": 0,
+      "column": 5,
+      "targetX": 1,
+      "targetY": -1
+    },
+    {
+      "file": "gaze/gaze-006.png",
+      "kind": "gaze",
+      "index": 6,
+      "row": 1,
+      "column": 0,
+      "targetX": -1,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-007.png",
+      "kind": "gaze",
+      "index": 7,
+      "row": 1,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-008.png",
+      "kind": "gaze",
+      "index": 8,
+      "row": 1,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-009.png",
+      "kind": "gaze",
+      "index": 9,
+      "row": 1,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-010.png",
+      "kind": "gaze",
+      "index": 10,
+      "row": 1,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-011.png",
+      "kind": "gaze",
+      "index": 11,
+      "row": 1,
+      "column": 5,
+      "targetX": 1,
+      "targetY": -0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-012.png",
+      "kind": "gaze",
+      "index": 12,
+      "row": 2,
+      "column": 0,
+      "targetX": -1,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-013.png",
+      "kind": "gaze",
+      "index": 13,
+      "row": 2,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-014.png",
+      "kind": "gaze",
+      "index": 14,
+      "row": 2,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-015.png",
+      "kind": "gaze",
+      "index": 15,
+      "row": 2,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-016.png",
+      "kind": "gaze",
+      "index": 16,
+      "row": 2,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-017.png",
+      "kind": "gaze",
+      "index": 17,
+      "row": 2,
+      "column": 5,
+      "targetX": 1,
+      "targetY": -0.33333333333333337
+    },
+    {
+      "file": "gaze/gaze-018.png",
+      "kind": "gaze",
+      "index": 18,
+      "row": 3,
+      "column": 0,
+      "targetX": -1,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-019.png",
+      "kind": "gaze",
+      "index": 19,
+      "row": 3,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-020.png",
+      "kind": "gaze",
+      "index": 20,
+      "row": 3,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-021.png",
+      "kind": "gaze",
+      "index": 21,
+      "row": 3,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-022.png",
+      "kind": "gaze",
+      "index": 22,
+      "row": 3,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-023.png",
+      "kind": "gaze",
+      "index": 23,
+      "row": 3,
+      "column": 5,
+      "targetX": 1,
+      "targetY": 0
+    },
+    {
+      "file": "gaze/gaze-024.png",
+      "kind": "gaze",
+      "index": 24,
+      "row": 4,
+      "column": 0,
+      "targetX": -1,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-025.png",
+      "kind": "gaze",
+      "index": 25,
+      "row": 4,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-026.png",
+      "kind": "gaze",
+      "index": 26,
+      "row": 4,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-027.png",
+      "kind": "gaze",
+      "index": 27,
+      "row": 4,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-028.png",
+      "kind": "gaze",
+      "index": 28,
+      "row": 4,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-029.png",
+      "kind": "gaze",
+      "index": 29,
+      "row": 4,
+      "column": 5,
+      "targetX": 1,
+      "targetY": 0.33333333333333326
+    },
+    {
+      "file": "gaze/gaze-030.png",
+      "kind": "gaze",
+      "index": 30,
+      "row": 5,
+      "column": 0,
+      "targetX": -1,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-031.png",
+      "kind": "gaze",
+      "index": 31,
+      "row": 5,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-032.png",
+      "kind": "gaze",
+      "index": 32,
+      "row": 5,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-033.png",
+      "kind": "gaze",
+      "index": 33,
+      "row": 5,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-034.png",
+      "kind": "gaze",
+      "index": 34,
+      "row": 5,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-035.png",
+      "kind": "gaze",
+      "index": 35,
+      "row": 5,
+      "column": 5,
+      "targetX": 1,
+      "targetY": 0.6666666666666667
+    },
+    {
+      "file": "gaze/gaze-036.png",
+      "kind": "gaze",
+      "index": 36,
+      "row": 6,
+      "column": 0,
+      "targetX": -1,
+      "targetY": 1
+    },
+    {
+      "file": "gaze/gaze-037.png",
+      "kind": "gaze",
+      "index": 37,
+      "row": 6,
+      "column": 1,
+      "targetX": -0.6,
+      "targetY": 1
+    },
+    {
+      "file": "gaze/gaze-038.png",
+      "kind": "gaze",
+      "index": 38,
+      "row": 6,
+      "column": 2,
+      "targetX": -0.19999999999999996,
+      "targetY": 1
+    },
+    {
+      "file": "gaze/gaze-039.png",
+      "kind": "gaze",
+      "index": 39,
+      "row": 6,
+      "column": 3,
+      "targetX": 0.19999999999999996,
+      "targetY": 1
+    },
+    {
+      "file": "gaze/gaze-040.png",
+      "kind": "gaze",
+      "index": 40,
+      "row": 6,
+      "column": 4,
+      "targetX": 0.6000000000000001,
+      "targetY": 1
+    },
+    {
+      "file": "gaze/gaze-041.png",
+      "kind": "gaze",
+      "index": 41,
+      "row": 6,
+      "column": 5,
+      "targetX": 1,
+      "targetY": 1
+    },
+    {
+      "file": "blink/blink-000.png",
+      "kind": "blink",
+      "index": 0
+    },
+    {
+      "file": "blink/blink-001.png",
+      "kind": "blink",
+      "index": 1
+    },
+    {
+      "file": "blink/blink-002.png",
+      "kind": "blink",
+      "index": 2
+    },
+    {
+      "file": "blink/blink-003.png",
+      "kind": "blink",
+      "index": 3
+    },
+    {
+      "file": "blink/blink-004.png",
+      "kind": "blink",
+      "index": 4
+    },
+    {
+      "file": "blink/blink-005.png",
+      "kind": "blink",
+      "index": 5
+    },
+    {
+      "file": "blink/blink-006.png",
+      "kind": "blink",
+      "index": 6
+    },
+    {
+      "file": "blink/blink-007.png",
+      "kind": "blink",
+      "index": 7
+    },
+    {
+      "file": "blink/blink-008.png",
+      "kind": "blink",
+      "index": 8
+    },
+    {
+      "file": "blink/blink-009.png",
+      "kind": "blink",
+      "index": 9
+    },
+    {
+      "file": "blink/blink-010.png",
+      "kind": "blink",
+      "index": 10
+    },
+    {
+      "file": "blink/blink-011.png",
+      "kind": "blink",
+      "index": 11
+    },
+    {
+      "file": "blink/blink-012.png",
+      "kind": "blink",
+      "index": 12
+    },
+    {
+      "file": "blink/blink-013.png",
+      "kind": "blink",
+      "index": 13
+    },
+    {
+      "file": "blink/blink-014.png",
+      "kind": "blink",
+      "index": 14
+    },
+    {
+      "file": "blink/blink-015.png",
+      "kind": "blink",
+      "index": 15
+    },
+    {
+      "file": "blink/blink-016.png",
+      "kind": "blink",
+      "index": 16
+    },
+    {
+      "file": "blink/blink-017.png",
+      "kind": "blink",
+      "index": 17
+    },
+    {
+      "file": "blink/blink-018.png",
+      "kind": "blink",
+      "index": 18
+    },
+    {
+      "file": "blink/blink-019.png",
+      "kind": "blink",
+      "index": 19
+    },
+    {
+      "file": "blink/blink-020.png",
+      "kind": "blink",
+      "index": 20
+    },
+    {
+      "file": "blink/blink-021.png",
+      "kind": "blink",
+      "index": 21
+    },
+    {
+      "file": "blink/blink-022.png",
+      "kind": "blink",
+      "index": 22
+    },
+    {
+      "file": "blink/blink-023.png",
+      "kind": "blink",
+      "index": 23
+    },
+    {
+      "file": "blink/blink-024.png",
+      "kind": "blink",
+      "index": 24
+    }
+  ]
+}

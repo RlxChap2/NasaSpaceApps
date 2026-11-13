@@ -1,0 +1,2 @@
+body.glb: Z-Anatomy, browser adaptation hpfrei. Source https://github.com/hpfrei/body-anatomy-3d-viewer/blob/main/public/body.glb — CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/ . Geometry unchanged, display materials recolored dynamically.
+torso.glb: Innerscene adapted from MakeHuman CC0. https://www.innerscene.com/tools/library/3d-parts/torso-with-removable-organs-1fe1b70a . CC0. Geometry unchanged; display materials recolored dynamically.

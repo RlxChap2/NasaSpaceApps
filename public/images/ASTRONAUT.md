@@ -1,0 +1,1 @@
+lunar-astronaut.png: AI-generated illustrative astronaut, created with OpenAI image generation. Not a NASA photograph. Prompt: Photorealistic full-body EVA astronaut floating in a relaxed pose, white detailed suit, gold opaque visor, backpack, facing left, transparent background, no logos or text. Used as a decorative cutout for a lunar human-health concept.
