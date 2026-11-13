@@ -5,7 +5,7 @@ import styles from './DashboardControls.module.css';
 
 export function DashboardButton({ children, type = 'button', ...props }: Omit<ComponentProps<'button'>, 'className'>) {
   return (
-    <button {...props} type={type} className={`mission-link ${styles.action}`}>
+    <button {...props} type={type} className="mission-link">
       <MissionActionContent>{children}</MissionActionContent>
     </button>
   );

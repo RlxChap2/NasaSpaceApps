@@ -16,6 +16,9 @@
   background: #191919;
   color: #ededed;
   color-scheme: dark;
+  outline: 1px solid #ffffff40;
+  outline-offset: 2px;
+  transition: outline-offset 180ms ease, outline-color 180ms ease, background-color 180ms ease;
 }
 
 .field input::placeholder,
@@ -89,8 +92,13 @@
   accent-color: #d4d4d4;
 }
 
+.field :is(input, select, textarea):enabled:is(:hover, :focus) {
+  outline-color: #a3a3a3;
+  outline-offset: 5px;
+}
+
 .field :is(input, select, textarea):focus {
-  outline: none;
+  outline-color: #e2e2e2;
   background: #303030;
 }
 
@@ -98,21 +106,19 @@
   background: #303030;
 }
 
-.checkbox input:focus-visible,
-button.action:focus-visible,
-button.action {
+.checkbox input:focus-visible {
   outline: none;
 }
 
-button.action:focus-visible {
-  background: #fff;
-  text-decoration: underline;
+@media (prefers-reduced-motion: reduce) {
+  .field :is(input, select, textarea) {
+    transition: none;
+  }
 }
 
 @media (forced-colors: active) {
   .field :is(input, select, textarea):focus,
-  .checkbox input:focus-visible,
-  button.action:focus-visible {
+  .checkbox input:focus-visible {
     outline: 2px solid Highlight;
   }
 }

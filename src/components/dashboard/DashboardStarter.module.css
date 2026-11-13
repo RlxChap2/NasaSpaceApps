@@ -38,6 +38,9 @@
   background: transparent;
   color: #bcbcbc;
   text-decoration: underline;
+  outline: 1px solid #ffffff40;
+  outline-offset: 2px;
+  transition: outline-offset 180ms ease, outline-color 180ms ease, background-color 180ms ease;
 }
 
 .status {
@@ -46,9 +49,16 @@
   color: #bcbcbc;
 }
 
-.reset:focus-visible {
-  outline: none;
+.reset:is(:hover, :focus-visible) {
+  outline-color: #e2e2e2;
+  outline-offset: 5px;
   background: #303030;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reset {
+    transition: none;
+  }
 }
 
 @media (max-width: 540px) {
