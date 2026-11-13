@@ -1,7 +1,7 @@
 .page {
   min-height: 80svh;
   padding: clamp(28px, 6vw, 90px) 6%;
-  background: #000;
+  background: #0d0d0d;
 }
 
 .page h1 {
@@ -36,14 +36,19 @@
   padding: 0 12px;
   border: 0;
   background: transparent;
-  color: #c7d4c8;
+  color: #bcbcbc;
   text-decoration: underline;
 }
 
 .status {
   min-height: 1.4em;
   margin: 0;
-  color: #c7d4c8;
+  color: #bcbcbc;
+}
+
+.reset:focus-visible {
+  outline: none;
+  background: #303030;
 }
 
 @media (max-width: 540px) {

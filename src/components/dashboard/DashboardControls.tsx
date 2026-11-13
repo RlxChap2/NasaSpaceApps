@@ -1,10 +1,11 @@
 import type { ComponentProps, ReactNode } from 'react';
+import { LuChevronDown } from 'react-icons/lu';
 import MissionActionContent from '../MissionActionContent';
 import styles from './DashboardControls.module.css';
 
 export function DashboardButton({ children, type = 'button', ...props }: Omit<ComponentProps<'button'>, 'className'>) {
   return (
-    <button {...props} type={type} className="mission-link">
+    <button {...props} type={type} className={`mission-link ${styles.action}`}>
       <MissionActionContent>{children}</MissionActionContent>
     </button>
   );
@@ -18,8 +19,17 @@ export function DashboardInput({ label, ...props }: ComponentProps<'input'> & { 
   return <Field label={label}><input {...props} /></Field>;
 }
 
-export function DashboardSelect({ label, children, ...props }: ComponentProps<'select'> & { label: string }) {
-  return <Field label={label}><select {...props}>{children}</select></Field>;
+export function DashboardSelect({ label, children, multiple, size, ...props }: ComponentProps<'select'> & { label: string }) {
+  const isDropdown = !multiple && (!size || size === 1);
+
+  return (
+    <Field label={label}>
+      <span className={isDropdown ? styles.dropdown : undefined}>
+        <select {...props} multiple={multiple} size={size}>{children}</select>
+        {isDropdown && <LuChevronDown size={16} aria-hidden="true" />}
+      </span>
+    </Field>
+  );
 }
 
 export function DashboardTextarea({ label, ...props }: ComponentProps<'textarea'> & { label: string }) {
