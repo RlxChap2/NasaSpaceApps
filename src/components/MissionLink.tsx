@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { LuPlus } from 'react-icons/lu';
+import MissionActionContent from './MissionActionContent';
 
 export default function MissionLink({ href, children }: { href: string; children: ReactNode }) {
   const Anchor = href.startsWith('#') ? 'a' : Link;
   return (
     <Anchor className="mission-link" href={href}>
-      <span>{children}</span>
-      <span className="mission-link-icon" aria-hidden="true"><LuPlus size={16} /></span>
+      <MissionActionContent>{children}</MissionActionContent>
     </Anchor>
   );
 }

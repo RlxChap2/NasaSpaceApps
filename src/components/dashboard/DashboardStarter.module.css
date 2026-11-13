@@ -1,0 +1,53 @@
+.page {
+  min-height: 80svh;
+  padding: clamp(28px, 6vw, 90px) 6%;
+  background: #000;
+}
+
+.page h1 {
+  margin: 0 0 clamp(26px, 5vw, 56px);
+  font-size: clamp(42px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.06em;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+  max-width: 760px;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.reset {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: #c7d4c8;
+  text-decoration: underline;
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 0;
+  color: #c7d4c8;
+}
+
+@media (max-width: 540px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}

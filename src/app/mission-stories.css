@@ -1,4 +1,4 @@
-a.mission-link {
+:is(a, button).mission-link {
   display: inline-grid;
   grid-template-columns: minmax(0, 1fr) 40px;
   align-items: stretch;
@@ -22,6 +22,11 @@ a.mission-link {
   padding: 8px 12px;
 }
 
+button.mission-link:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
 .mission-link > .mission-link-icon {
   padding: 0;
   border-inline-start: 1px solid #01010159;
@@ -31,16 +36,16 @@ a.mission-link {
   transition: transform 220ms ease;
 }
 
-a.mission-link:hover {
+:is(a, button).mission-link:hover:where(:not(:disabled)) {
   background: #fff;
   outline-offset: 4px;
 }
 
-.mission-link:hover svg {
+.mission-link:hover:where(:not(:disabled)) svg {
   transform: rotate(90deg);
 }
 
-a.mission-link:focus-visible {
+:is(a, button).mission-link:focus-visible {
   outline: 2px solid #c7d4c8;
   outline-offset: 5px;
 }
@@ -156,12 +161,12 @@ a.mission-link:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  a.mission-link,
+  :is(a, button).mission-link,
   .mission-link-icon svg {
     transition: none;
   }
 
-  .mission-link:hover svg {
+  .mission-link:hover:where(:not(:disabled)) svg {
     transform: none;
   }
 }
