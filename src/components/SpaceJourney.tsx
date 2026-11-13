@@ -9,6 +9,7 @@ import MissionFaq from './MissionFaq';
 import MissionFooter from './MissionFooter';
 import MissionLink from './MissionLink';
 import MissionStories from './MissionStories';
+import MissionChapters from './MissionChapters';
 import { ArrowDown, ArrowRight, Health, ShieldTick, Moon, People, Wind, Activity } from 'iconsax-react';
 
 export default function SpaceJourney() {
@@ -166,6 +167,7 @@ function HealthSections() {
       <div className="body-invitation-visual" data-reveal><Image unoptimized src="/images/crew-health.jpg" alt="An astronaut performing an in-flight health examination" width={1400} height={933}/><div><span><i className="good"/>Good</span><span><i className="watch"/>Review</span><span><i className="attention"/>Attention</span></div></div>
     </section>
     <section className="mission-routine" id="how-it-works"><div className="section-intro" data-reveal><h2>LESS GUESSWORK.<br /><span>MORE CONTEXT.</span></h2><p>From a daily check-in<br />to a picture that makes sense.</p></div><div className="routine-columns"><article data-reveal><h3>Meet the person.</h3><p>Select a crew member and mission day. Review sleep, stress, mood and vital signs in a single daily record.</p><MissionLink href="/crew-health#daily-log">View daily records</MissionLink></article><article data-reveal><h3>Explore the body.</h3><p>Move across the anatomy to see each region. Colored example cases reveal observations and the next review step.</p><MissionLink href="/crew-health#body">Open body explorer</MissionLink></article><article data-reveal><h3>Follow the change.</h3><p>Compare observations over time. Explore sleep history or add a reading to the interactive trend to understand the bigger picture.</p><MissionLink href="/crew-health#signals">Explore trends</MissionLink></article></div></section>
+    <MissionChapters />
     <MissionFaq />
   </div>;
 }

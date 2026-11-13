@@ -23,6 +23,7 @@ export default function MissionFooter() {
               <li><Link href="/crew-health#daily-log">Daily records</Link></li>
               <li><Link href="/crew-health#signals">Health trends</Link></li>
               <li><a href="#how-it-works">How it works</a></li>
+              <li><a href="#mission-briefing">Mission briefing</a></li>
               <li><a href="#questions">Questions</a></li>
             </ul>
           </div>
