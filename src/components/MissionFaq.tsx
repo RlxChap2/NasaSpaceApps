@@ -54,7 +54,7 @@ export default function MissionFaq() {
                 >
                   <Icon className="mission-faq-topic" aria-hidden="true" />
                   {question}
-                  <LuPlus className="mission-faq-toggle" aria-hidden="true" />
+                  <span className="mission-faq-toggle" aria-hidden="true"><LuPlus size={16} /></span>
                 </button>
               </h3>
               <div className="mission-faq-answer" id={panelId} inert={!isOpen}>

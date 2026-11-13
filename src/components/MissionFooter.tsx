@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { LuArrowRight, LuArrowUp, LuArrowUpRight, LuGithub, LuOrbit } from 'react-icons/lu';
+import { LuArrowUpRight, LuGithub, LuOrbit } from 'react-icons/lu';
+import MissionLink from './MissionLink';
 
 export default function MissionFooter() {
   return (
@@ -11,9 +12,7 @@ export default function MissionFooter() {
             BEYOND
           </a>
           <p>Farther into space.<br />Closer to the human.</p>
-          <Link className="mission-footer-cta" href="/crew-health#body">
-            Explore the body <LuArrowRight aria-hidden="true" />
-          </Link>
+          <MissionLink href="/crew-health#body">Explore the body</MissionLink>
         </div>
         <nav className="mission-footer-nav" aria-label="Mission footer">
           <div>
@@ -39,7 +38,7 @@ export default function MissionFooter() {
       </div>
       <div className="mission-footer-meta">
         <p>Independent hackathon concept · simulated health records</p>
-        <a href="#moon">Back to top <LuArrowUp aria-hidden="true" /></a>
+        <MissionLink href="#moon">Back to top</MissionLink>
       </div>
     </footer>
   );

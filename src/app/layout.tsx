@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './complete-site.css';
 import './mission-end.css';
+import './mission-stories.css';
 
 export const metadata: Metadata = {
   title: 'BEYOND | NASA Space Apps',

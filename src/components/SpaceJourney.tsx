@@ -7,6 +7,8 @@ import Image from 'next/image';
 import EarthGlobe from './EarthGlobe';
 import MissionFaq from './MissionFaq';
 import MissionFooter from './MissionFooter';
+import MissionLink from './MissionLink';
+import MissionStories from './MissionStories';
 import { ArrowDown, ArrowRight, Health, ShieldTick, Moon, People, Wind, Activity } from 'iconsax-react';
 
 export default function SpaceJourney() {
@@ -158,20 +160,12 @@ function HealthSections() {
       <div className="film-heading" data-reveal><h2>WE LEAVE EARTH.<br /><span>OUR NEEDS COME WITH US.</span></h2><p>On Earth, air, gravity and familiar rhythms shape everyday life. On the Moon, the crew depends on a carefully managed habitat. BEYOND brings human health and the surrounding environment into the same picture.</p></div>
       <div className="globe-frame" data-reveal><EarthGlobe /></div>
     </section>
-    <section className="project-story" id="project">
-      <div className="story-heading" data-reveal><h2>EVERY SIGNAL.<br /><span>A HUMAN STORY.</span></h2><p>From an individual reading to the bigger picture.<br />A crew health platform designed for life on the Moon.</p></div>
-      <div className="story-cards">
-        <article data-reveal><Image unoptimized sizes="(max-width: 700px) 90vw, 30vw" src="/images/crew-health.jpg" alt="An astronaut performing an ultrasound examination aboard the space station" width={1000} height={1200} /><div><p className="card-category">THE BODY</p><h3>Understand what the body is telling you.</h3><p>Bring heart rate, oxygen saturation, body temperature and dosimeter readings into a personal timeline. Device connections are planned; the current prototype uses demonstration data.</p></div></article>
-        <article data-reveal><Image unoptimized sizes="(max-width: 700px) 90vw, 30vw" src="/images/crew-exercise.jpg" alt="A NASA astronaut exercising on the space station cycle" width={1000} height={1200} /><div><p className="card-category">THE ROUTINE</p><h3>See the patterns behind each reading.</h3><p>Combine sleep, movement, fatigue and mood observations with recorded measurements. Compare changes over time so the crew can prepare informed questions for the mission health team.</p></div></article>
-        <article data-reveal><Image unoptimized sizes="(max-width: 700px) 90vw, 30vw" src="/images/crew-observation.jpg" alt="An astronaut at the International Space Station cupola" width={1000} height={1200} /><div><p className="card-category">THE WHOLE PICTURE</p><h3>Connect the crew to their environment.</h3><p>Review cabin temperature, pressure, humidity and supply checks alongside personal trends. The proposed workflow supports offline records and later sharing with authorized mission staff.</p></div></article>
-      </div>
-
-    </section>
+    <MissionStories />
     <section id="habitat" className="body-invitation">
-      <div className="body-invitation-copy" data-reveal><h2>SEE THE BODY.<br /><span>UNDERSTAND<br />THE SIGNALS.</span></h2><p>Explore the human side of a mission. Point to a body region, discover its recorded status and see the observations behind every color.</p><a className="editorial-action" href="/crew-health">Explore crew health <ArrowRight color="currentColor" size={22}/></a></div>
+      <div className="body-invitation-copy" data-reveal><h2>SEE THE BODY.<br /><span>UNDERSTAND<br />THE SIGNALS.</span></h2><p>Explore the human side of a mission. Point to a body region, discover its recorded status and see the observations behind every color.</p><MissionLink href="/crew-health">Explore crew health</MissionLink></div>
       <div className="body-invitation-visual" data-reveal><Image unoptimized src="/images/crew-health.jpg" alt="An astronaut performing an in-flight health examination" width={1400} height={933}/><div><span><i className="good"/>Good</span><span><i className="watch"/>Review</span><span><i className="attention"/>Attention</span></div></div>
     </section>
-    <section className="mission-routine" id="how-it-works"><div className="section-intro" data-reveal><h2>LESS GUESSWORK.<br /><span>MORE CONTEXT.</span></h2><p>From a daily check-in<br />to a picture that makes sense.</p></div><div className="routine-columns"><article data-reveal><h3>Meet the person.</h3><p>Select a crew member and mission day. Review sleep, stress, mood and vital signs in a single daily record.</p><a href="/crew-health#daily-log">View daily records</a></article><article data-reveal><h3>Explore the body.</h3><p>Move across the anatomy to see each region. Colored example cases reveal observations and the next review step.</p><a href="/crew-health#body">Open body explorer</a></article><article data-reveal><h3>Follow the change.</h3><p>Compare observations over time. Explore sleep history or add a reading to the interactive trend to understand the bigger picture.</p><a href="/crew-health#signals">Explore trends</a></article></div></section>
+    <section className="mission-routine" id="how-it-works"><div className="section-intro" data-reveal><h2>LESS GUESSWORK.<br /><span>MORE CONTEXT.</span></h2><p>From a daily check-in<br />to a picture that makes sense.</p></div><div className="routine-columns"><article data-reveal><h3>Meet the person.</h3><p>Select a crew member and mission day. Review sleep, stress, mood and vital signs in a single daily record.</p><MissionLink href="/crew-health#daily-log">View daily records</MissionLink></article><article data-reveal><h3>Explore the body.</h3><p>Move across the anatomy to see each region. Colored example cases reveal observations and the next review step.</p><MissionLink href="/crew-health#body">Open body explorer</MissionLink></article><article data-reveal><h3>Follow the change.</h3><p>Compare observations over time. Explore sleep history or add a reading to the interactive trend to understand the bigger picture.</p><MissionLink href="/crew-health#signals">Explore trends</MissionLink></article></div></section>
     <MissionFaq />
   </div>;
 }
