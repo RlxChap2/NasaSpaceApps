@@ -46,7 +46,7 @@ export default function ResearchEvidence() {
       <div className={styles.heading}>
         <div><h1>Research &amp; Evidence</h1></div>
         <div className={styles.actions}>
-          <MissionLink href="https://drive.google.com/drive/u/0/folders/1XmD-l9rsSQS5XVYig2B3VjddPPOlAppr" external>Google Drive</MissionLink>
+          <MissionLink href="https://docs.google.com/spreadsheets/d/1Udl4Lahc4AHnlVe9jr79_ztFN5UjsfSO/edit" external>Reference workbook</MissionLink>
           <MissionLink href="/dashboard/check-in">Daily Check-in</MissionLink>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function ResearchEvidence() {
       ))}
       {thresholds.length > 0 && (
         <section className={styles.panel}>
-          <h2>NASA-STD-3001 &amp; Inspiration4 Reference Thresholds ({thresholds.length})</h2>
+          <h2>Demo Thresholds &amp; Research References ({thresholds.length})</h2>
           <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="NASA reference thresholds">
             <table>
               <thead>
@@ -103,7 +103,7 @@ export default function ResearchEvidence() {
       )}
       {osdrFiles.length > 0 && (
         <section className={styles.panel}>
-          <h2>Verified NASA OSDR &amp; Benchmark Repository ({osdrFiles.length})</h2>
+          <h2>NASA OSDR &amp; Benchmark File Catalog ({osdrFiles.length})</h2>
           <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="NASA OSDR files">
             <table>
               <thead>
@@ -132,7 +132,7 @@ export default function ResearchEvidence() {
       )}
       <section className={styles.panel}>
         <h2>Data &amp; Limitations</h2>
-        <p>Demo measurements are simulated and calibrated to NASA-STD-3001 and Inspiration4 findings. Manual entries are evaluated and persisted by the local FastAPI + SQLite backend. Crew State Health is a research prototype and is not intended for medical diagnosis or treatment.</p>
+        <p>The example measurements are simulated. The reference table lists sources alongside the prototype demonstration rules. FastAPI saves manual demo entries to SQLite. Crew State Health is an educational prototype and should never be used for diagnosis or treatment.</p>
       </section>
     </div>
   );

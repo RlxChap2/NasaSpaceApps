@@ -1,48 +1,44 @@
 # Crew State Health | NASA Space Apps
 
-Crew State Health is an interactive web experience about astronaut health and life beyond Earth. Explore the Moon, examine a 3D anatomy model, and browse simulated crew health records.
+Crew State Health is an interactive web prototype for exploring astronaut health and life beyond Earth. The site includes lunar scenes, a 3D anatomy explorer and simulated crew records. Team 0xE90 built it for [Create Health Monitoring Software for Astronauts on Space Missions](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/).
 
 ## Requirements
 
-- Node.js 20.9 or later with npm.
-- Git to clone the repository. You can also download a ZIP from GitHub.
-- A browser with WebGL support for the 3D scenes.
-
-## Download and install
-
-```bash
-git clone https://github.com/RlxChap2/NasaSpaceApps.git
-cd NasaSpaceApps/full
-npm ci
-```
-
-To download without Git, choose **Code → Download ZIP** on GitHub, extract the archive, open a terminal in its `full/` folder, and run `npm ci`.
+- Node.js 20.9 or later with npm. The review used Node.js 24.19.0 and npm 11.17.0.
+- Python. The API was tested with Python 3.13.14.
+- Git, or a ZIP of the repository from someone with access. A WebGL-capable browser is needed for 3D scenes.
 
 ## Run locally
 
-```bash
+Open two terminals at the repository root. Start the API first. These commands use PowerShell.
+
+```powershell
+cd api
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+A new SQLite database seeds automatically on startup. The API provides [OpenAPI docs](http://localhost:8000/docs). See the [API README](../api/README.md) for the seed and test commands. Its reference to planned frontend integration predates the current checkout.
+
+```powershell
+cd full
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3847](http://localhost:3847). The [Crew Health page](http://localhost:3847/crew-health) includes the anatomy model and daily crew records.
+Open the [site](http://localhost:3847), [Daily Health Check-in](http://localhost:3847/dashboard/check-in) or [Crew Health](http://localhost:3847/crew-health). Leave the API running while using Check-in. Use fictional values and choose a crew member, phase and unused mission day. The saved entry appears in the Crew Daily Log. **Load Demo Scenario** clears all custom records from the connected API database and resets this browser's sample history. Use it with a disposable demo database.
 
-## Simulated crew dashboard
+For frontend production checks, run `npm run lint` and `npm run build` from `full/`, then `npm start` to serve the build on port 3847. For a different API origin, set `NEXT_PUBLIC_API_URL` in the frontend environment before running or building Next.js. See [Architecture](ARCHITECTURE.md) for public deployment constraints.
 
-Open [the dashboard](http://localhost:3847/dashboard) to explore simulated readings, compare trends, and enter a sample check-in. Check-ins are saved in this browser's local storage. **Load Demo Scenario** restores the sample readings and asks before replacing locally stored check-ins.
+## Project documentation
 
-The storage operations are grouped in [check-ins.ts](../full/src/components/dashboard/check-ins.ts) so a future backend can replace the browser storage implementation.
+- [Project overview and repository inventory](PROJECT_OVERVIEW.md)
+- [Architecture and API](ARCHITECTURE.md)
+- [Data provenance and quality](DATA_PROVENANCE.md)
+- [NASA and other research evidence](NASA_EVIDENCE.md)
+- [Test results](TESTING.md)
+- [AI use and asset credits](AI_USAGE.md)
+- [NASA submission draft and slide audit](../NASA_SUBMISSION_DRAFT.md)
 
-## Build and run for production
-
-```bash
-npm run build
-npm start
-```
-
-The production server also runs on port `3847`. Run `npm run lint` to check the code.
-
-## Asset credits
-
-- [NASA images and video](../full/public/images/NASA-MEDIA.md)
-- [Anatomy model licenses](../full/public/models/anatomy/LICENSE.md)
-- [Helmet model attribution](../full/public/models/helmet/ATTRIBUTION.md)
+Original asset notes include [NASA media](../full/public/images/NASA-MEDIA.md), [anatomy model licenses](../full/public/models/anatomy/LICENSE.md) and [helmet attribution](../full/public/models/helmet/ATTRIBUTION.md). The repository is private as of November 14, 2026. A public final project URL and project-wide license remain to be confirmed.

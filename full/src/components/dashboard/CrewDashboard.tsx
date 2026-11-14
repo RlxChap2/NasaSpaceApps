@@ -262,7 +262,7 @@ function CheckInForm({
   return (
     <div className={styles.checkIn}>
       <div className={styles.heading}>
-        <div><h1>Daily Health Check-in</h1><p>Record daily astronaut measurements and evaluate them with the NASA-STD-3001 backend engine.</p></div>
+        <div><h1>Daily Health Check-in</h1><p>Enter fictional crew measurements and see how the demo rules classify them.</p></div>
       </div>
       {saved ? (
         <section className={`${styles.panel} ${styles.savedCheckIn}`} aria-label="Saved check-in">
