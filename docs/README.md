@@ -41,4 +41,8 @@ For frontend production checks, run `npm run lint` and `npm run build` from `ful
 - [AI use and asset credits](AI_USAGE.md)
 - [NASA submission draft and slide audit](../NASA_SUBMISSION_DRAFT.md)
 
-Original asset notes include [NASA media](../full/public/images/NASA-MEDIA.md), [anatomy model licenses](../full/public/models/anatomy/LICENSE.md) and [helmet attribution](../full/public/models/helmet/ATTRIBUTION.md). The repository is private as of November 14, 2026. A public final project URL and project-wide license remain to be confirmed.
+Original asset notes include [NASA media](../full/public/images/NASA-MEDIA.md), [anatomy model licenses](../full/public/models/anatomy/LICENSE.md) and [helmet attribution](../full/public/models/helmet/ATTRIBUTION.md).
+
+## License
+
+Copyright 2026 Crew State Health contributors (Team 0xE90). Original project code and documentation are licensed under [Apache License 2.0](../LICENSE). Third-party assets and dependencies retain their respective terms. See [NOTICE](../NOTICE) and [asset credits](AI_USAGE.md#asset-and-dependency-references).

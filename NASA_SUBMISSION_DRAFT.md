@@ -112,7 +112,7 @@ We cite [NASA-STD-3001 Volume 1 Rev C](https://www.nasa.gov/wp-content/uploads/2
 
 - [Simulated fixture and reference workbook](https://docs.google.com/spreadsheets/d/1Udl4Lahc4AHnlVe9jr79_ztFN5UjsfSO/edit). The workbook records 40 invented crew-day observations, research links and catalog metadata.
 
-- [PUBLIC_ASSET_AND_SOFTWARE_NOTICES_URL]. Include public attribution for NASA media, anatomy assets (CC BY-SA 4.0 and CC0), planet textures (CC BY 4.0 where applicable), star data (BSD-3-Clause), and the third-party fonts, images, packages and tools used in the submitted build. [PUBLIC_PROJECT_LICENSE_URL]. Verify the detailed helmet's noncommercial license before including it.
+- [PUBLIC_ASSET_AND_SOFTWARE_NOTICES_URL]. Include public attribution for NASA media, anatomy assets (CC BY-SA 4.0 and CC0), planet textures (CC BY 4.0 where applicable), star data (BSD-3-Clause), and the third-party fonts, images, packages and tools used in the submitted build. The original project code and documentation are licensed under Apache License 2.0. [PUBLIC_PROJECT_LICENSE_URL]. Verify the detailed helmet's noncommercial license before including it.
 
 ## Deck audit
 
@@ -138,7 +138,7 @@ The supplied Google Slides edit URL opened without login and exported as PPTX an
 
 3. **Correct and retest the deck.** Keep all seven slides including the title, or use a 30-second-or-shorter video as the single demo. Capture the actual save and readback and keep the source use visible. Check that the final link opens without login.
 
-4. **Resolve licensing and SI media rights.** Add approved licensing for original work and complete the notices and permissions in [AI usage](docs/AI_USAGE.md). Confirm SI tools, watermark generated visuals, verify rights and adult status where applicable, and drop anything unresolved from the public version.
+4. **Resolve third-party and SI media rights.** Complete the notices and permissions in [AI usage](docs/AI_USAGE.md) and replace the public license URL placeholder with a link to the Apache 2.0 license that judges can open. Confirm SI tools, watermark generated visuals, verify rights and adult status where applicable, and drop anything unresolved from the public version.
 
 5. **Clarify the data and rule claims.** Use “simulated demo data” in the app and deck, describe rule output as illustrative, and remove unsupported calibration and medical claims. Keep source IDs and URLs in the final form. If research materials behind Drive affect a claim, publish the relevant source or provide an export for verification.
 
