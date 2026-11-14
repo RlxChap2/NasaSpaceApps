@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   compress: true,
   allowedDevOrigins: ["192.168.31.80"],
   images: {
+    // The Vercel Services deployment returns 404 for /_next/image.
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2592000,
     deviceSizes: [640, 750, 1080, 1400, 1920],
