@@ -1,0 +1,73 @@
+NASA SPACE APPS 2026 — SIMULATED ASTRONAUT DAILY VITALS & CABIN LOG,,,,,,,,,,,,,,,,
+"40 Daily Astronaut Observations Calibrated to NASA-STD-3001, Inspiration4 Multi-Omics & PhysioNet Benchmarks",,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Record ID,Astronaut ID,Mission Phase,Mission Day,Data Label,Sleep Hours,Stress Score (0-10),Mood Unhappiness (0-10),Heart Rate (bpm),Systolic BP (mmHg),Diastolic BP (mmHg),Body Temp (°C),Blood Sugar (mg/dL),Cabin CO2 (mmHg),Overall Alert Status,Recommended In-Flight Countermeasure Action,Source Reference & Evidence Link
+REC-001,C001,Pre-Flight,L-3,SIMULATED - NASA Calibrated,7.8,2,1,64,114,72,36.8,86,0.5,GREEN - NOMINAL,Maintain normal pre-flight schedule,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-002,C001,Pre-Flight,L-1,SIMULATED - NASA Calibrated,7.1,3,2,68,118,75,36.9,89,0.5,GREEN - NOMINAL,Pre-launch rest & hydration,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-003,C001,In-Flight,FD1,SIMULATED - NASA Calibrated,6.4,5,2,72,122,78,37.1,94,0.9,YELLOW - WARNING,Blue-light therapy + circadian sleep hygiene,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-004,C001,In-Flight,FD2,SIMULATED - NASA Calibrated,6.8,4,2,70,119,76,37,92,0.8,YELLOW - WARNING,Paced breathing + 30 min aerobic ergometer,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-005,C001,In-Flight,FD3,SIMULATED - NASA Calibrated,7.2,3,1,67,116,74,36.9,88,0.7,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-006,C001,In-Flight,FD4,SIMULATED - NASA Calibrated,6.5,5,3,74,121,77,37.2,96,1.1,YELLOW - WARNING,Schedule 8.5h sleep window + cabin CO2 check,PMC12155433: Astronaut Sleep Interventions (2025)
+REC-007,C001,In-Flight,FD5,SIMULATED - NASA Calibrated,7.4,3,2,66,115,73,36.8,90,0.8,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-008,C001,In-Flight,FD6,SIMULATED - NASA Calibrated,6.9,4,2,71,118,75,37,93,0.9,YELLOW - WARNING,Pre-landing fluid & salt loading protocol,NASA-STD-3001 Vol 1 Rev C: Fluid Loading Countermeasure
+REC-009,C001,Post-Flight,R+1,SIMULATED - NASA Calibrated,6.6,4,1,88,126,82,37.1,98,0.5,YELLOW - WARNING,Post-flight orthostatic HR elevation: compression garments + hydration,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-010,C001,Post-Flight,R+3,SIMULATED - NASA Calibrated,7.9,2,0,69,115,73,36.8,87,0.5,GREEN - NOMINAL,Recovery nominal; continue reconditioning,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-011,C002,Pre-Flight,L-3,SIMULATED - NASA Calibrated,7.5,2,2,66,112,70,36.7,84,0.5,GREEN - NOMINAL,Maintain normal pre-flight schedule,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-012,C002,Pre-Flight,L-1,SIMULATED - NASA Calibrated,6.8,4,3,72,117,74,36.9,91,0.5,YELLOW - WARNING,Pre-launch sleep extension + relaxation,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-013,C002,In-Flight,FD1,SIMULATED - NASA Calibrated,5.6,7,5,84,128,83,37.4,104,1.2,RED - CRITICAL ALERT,CRITICAL: Space motion sickness & <6h sleep (C002 pattern); anti-nausea protocol + 2h nap + reduce cognitive workload,Nature (2024): Inspiration4 Space Motion Sickness & Sleep
+REC-014,C002,In-Flight,FD2,SIMULATED - NASA Calibrated,6.2,6,4,79,124,80,37.2,101,1,YELLOW - WARNING,Vestibular adaptation rest + low-glycemic hydration,Nature (2024): Inspiration4 Space Motion Sickness & Sleep
+REC-015,C002,In-Flight,FD3,SIMULATED - NASA Calibrated,6.9,4,3,73,118,76,37,95,0.8,YELLOW - WARNING,Improving; light therapy + moderate resistance exercise,Nature (2024): Inspiration4 Space Motion Sickness & Sleep
+REC-016,C002,In-Flight,FD4,SIMULATED - NASA Calibrated,7.1,3,2,70,115,74,36.9,90,0.7,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 Space Motion Sickness & Sleep
+REC-017,C002,In-Flight,FD5,SIMULATED - NASA Calibrated,7.3,3,2,68,114,72,36.8,88,0.8,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 Space Motion Sickness & Sleep
+REC-018,C002,In-Flight,FD6,SIMULATED - NASA Calibrated,6.7,4,2,72,117,75,37,92,0.9,YELLOW - WARNING,Pre-landing fluid loading + sleep hygiene,NASA-STD-3001 Vol 1 Rev C: Pre-Landing Rehydration
+REC-019,C002,Post-Flight,R+1,SIMULATED - NASA Calibrated,6.4,5,2,91,129,84,37.2,102,0.5,YELLOW - WARNING,Post-flight elevated HR (C002 pattern): seated rest + oral rehydration,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-020,C002,Post-Flight,R+3,SIMULATED - NASA Calibrated,7.7,2,1,70,114,72,36.8,86,0.5,GREEN - NOMINAL,Recovery nominal,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-021,C003,Pre-Flight,L-3,SIMULATED - NASA Calibrated,8,1,1,62,110,68,36.7,82,0.5,GREEN - NOMINAL,Nominal pre-flight baseline,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-022,C003,Pre-Flight,L-1,SIMULATED - NASA Calibrated,7.4,2,1,64,112,70,36.8,85,0.5,GREEN - NOMINAL,Nominal pre-flight baseline,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-023,C003,In-Flight,FD1,SIMULATED - NASA Calibrated,6.8,4,2,66,116,74,37,91,0.8,YELLOW - WARNING,Extend sleep window toward 8.5h target,PMC12155433: Astronaut Sleep Interventions (2025)
+REC-024,C003,In-Flight,FD2,SIMULATED - NASA Calibrated,7,3,2,65,114,72,36.9,89,0.7,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-025,C003,In-Flight,FD3,SIMULATED - NASA Calibrated,6.5,5,3,69,118,75,37.1,94,1.1,YELLOW - WARNING,Workload pacing + blue-light schedule alignment,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-026,C003,In-Flight,FD4,SIMULATED - NASA Calibrated,5.8,6,7,78,125,81,37.7,108,1.8,RED - CRITICAL ALERT,"CRITICAL: High mood/fatigue & <6h sleep + mild exercise hyperthermia (37.7°C); cool cabin to 21°C, mandatory rest, psychological check-in",Nature (2024): Inspiration4 Thermoregulation & Fatigue
+REC-027,C003,In-Flight,FD5,SIMULATED - NASA Calibrated,7.5,3,2,64,113,71,36.9,88,0.8,GREEN - NOMINAL,Recovered to nominal after rest countermeasure,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-028,C003,In-Flight,FD6,SIMULATED - NASA Calibrated,7.1,3,2,66,115,73,36.9,90,0.8,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-029,C003,Post-Flight,R+1,SIMULATED - NASA Calibrated,5.9,7,4,82,122,79,37.1,99,0.5,RED - CRITICAL ALERT,CRITICAL: Post-flight physical exhaustion spike (C003 pattern); mandatory 9h recovery sleep + supervised physical reconditioning,Nature (2024): Inspiration4 C003 Landing Exhaustion
+REC-030,C003,Post-Flight,R+3,SIMULATED - NASA Calibrated,8.1,2,1,63,111,69,36.7,84,0.5,GREEN - NOMINAL,Recovery nominal,Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-031,C004,Pre-Flight,L-3,SIMULATED - NASA Calibrated,7.6,2,1,65,115,73,36.8,88,0.5,GREEN - NOMINAL,Nominal pre-flight baseline,Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-032,C004,Pre-Flight,L-1,SIMULATED - NASA Calibrated,7.2,3,2,66,116,74,36.8,90,0.5,GREEN - NOMINAL,Nominal pre-flight baseline,Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-033,C004,In-Flight,FD1,SIMULATED - NASA Calibrated,6.3,5,3,56,112,71,36.7,93,0.9,YELLOW - WARNING,Monitor space motion sickness & vagal HR drop (C004 pattern),Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-034,C004,In-Flight,FD2,SIMULATED - NASA Calibrated,6.7,4,2,53,109,69,36.6,91,1.3,YELLOW - WARNING,Lower in-flight HR + elevated HRV (C004 pattern); check SpO2 & cabin CO2 ventilation,Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-035,C004,In-Flight,FD3,SIMULATED - NASA Calibrated,7,3,2,57,113,72,36.8,89,0.8,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-036,C004,In-Flight,FD4,SIMULATED - NASA Calibrated,7.2,3,1,58,114,72,36.8,87,0.7,GREEN - NOMINAL,Nominal in-flight routine,Nature (2024): Inspiration4 C004 Vagal HR & HRV Dynamics
+REC-037,C004,In-Flight,FD5,SIMULATED - NASA Calibrated,6.6,4,3,60,118,76,37,128,1,RED - CRITICAL ALERT,CRITICAL: Fasting blood sugar >= 126 mg/dL (spaceflight insulin resistance spike); switch to low-glycemic ration + 45 min aerobic cycle ergometry + re-check CMP glucose,NASA OSDR OSD-575: Inspiration4 CMP Glucose Assay
+REC-038,C004,In-Flight,FD6,SIMULATED - NASA Calibrated,7.3,3,2,61,115,74,36.9,104,0.8,YELLOW - WARNING,Glucose improving (104 mg/dL); continue low-glycemic diet & pre-landing hydration,NASA OSDR OSD-575: Inspiration4 CMP Glucose Assay
+REC-039,C004,Post-Flight,R+1,SIMULATED - NASA Calibrated,7,3,1,67,118,75,36.9,94,0.5,GREEN - NOMINAL,Post-flight cardiovascular baseline restored (C004 pattern),Nature (2024): Inspiration4 SOMA Multi-Omics
+REC-040,C004,Post-Flight,R+3,SIMULATED - NASA Calibrated,7.8,1,0,64,114,72,36.8,87,0.5,GREEN - NOMINAL,Recovery nominal,Nature (2024): Inspiration4 SOMA Multi-Omics
+,,,,,,,,,,,,,,,,
+EXECUTIVE SUMMARY & MULTI-DIMENSIONAL AGGREGATION SEGMENTATION,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Overall Fleet Status Metric,,Record Count,Percentage,Formula Reference,Alert Tier Clinical Interpretation,,,,,,,,,,,
+Total Records Tracked,,40,1,40,Total simulated astronaut person-days across all mission phases,,,,,,,,,,,
+GREEN - NOMINAL Records,,21,0.525,21,All health and cabin parameters within healthy flight limits,,,,,,,,,,,
+YELLOW - WARNING Records,,15,0.375,15,"Mild deviation detected (e.g. sleep 6-7h, stress 4-6, HR 86-99)",,,,,,,,,,,
+RED - CRITICAL ALERT Records,,4,0.1,4,"Severe clinical deviation (e.g. sleep <6h, stress >=7, glucose >=126)",,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+MISSION PHASE SEGMENTATION ANALYSIS,,,,,,,,,,,,,,,,
+Mission Phase,Record Count,Avg Sleep (hrs),Avg Stress (0-10),Avg Mood Unhappiness,Avg Heart Rate (bpm),Avg Systolic BP (mmHg),Avg Diastolic BP (mmHg),Avg Body Temp (°C),Avg Blood Sugar (mg/dL),Critical Red Alerts,Warning Yellows,Nominal Greens,,,,
+Pre-Flight,8,7.425,2.375,1.625,65.875,114.25,72,36.8,86.875,0,1,7,,,,
+In-Flight,24,6.783333333,4.041666667,2.541666667,67.45833333,117.0416667,74.70833333,36.98333333,94.79166667,3,12,9,,,,
+Post-Flight,8,7.175,3.25,1.25,74.25,118.625,75.75,36.925,92.125,1,2,5,,,,
+Fleet Total / Avg,40,6.99,3.55,2.1,68.5,116.8,74.375,36.935,92.675,4,15,21,,,,
+,,,,,,,,,,,,,,,,
+ASTRONAUT PROFILE SEGMENTATION ANALYSIS,,,,,,,,,,,,,,,,
+Astronaut ID,Record Count,Avg Sleep (hrs),Avg Stress (0-10),Avg Mood Unhappiness,Avg Heart Rate (bpm),Avg Systolic BP (mmHg),Avg Diastolic BP (mmHg),Avg Body Temp (°C),Avg Blood Sugar (mg/dL),Critical Red Alerts,Warning Yellows,Nominal Greens,,,,
+C001,10,7.06,3.5,1.6,70.9,118.4,75.5,36.96,91.3,0,5,5,,,,
+C002,10,6.82,4,2.6,74.5,118.8,76,36.99,93.3,1,5,4,,,,
+C003,10,7.01,3.6,2.5,67.9,115.6,73.2,36.98,91,2,2,6,,,,
+C004,10,7.07,3.1,1.7,60.7,114.4,72.8,36.81,95.1,1,3,6,,,,
+Fleet Summary,40,6.99,3.55,2.1,68.5,116.8,74.375,36.935,92.675,4,15,21,,,,
+,,,,,,,,,,,,,,,,
+FLEET VITAL SIGNS RANGE & EXTREMA ANALYSIS (MIN / MAX / AVERAGE),,,,,,,,,,,,,,,,
+Extrema Metric,Records Evaluated,Sleep Hours,Stress Score (0-10),Mood Unhappiness,Heart Rate (bpm),Systolic BP (mmHg),Diastolic BP (mmHg),Body Temp (°C),Blood Sugar (mg/dL),Cabin CO2 (mmHg),Notes & Operational Significance,,,,,
+Fleet Minimum,40,5.6,1,0,53,109,68,36.6,82,0.5,Lowest observed biometric/cabin level across all mission days,,,,,
+Fleet Average,40,6.99,3.55,2.1,68.5,116.8,74.375,36.935,92.675,0.7525,Cohort central tendency across full 40-record mission profile,,,,,
+Fleet Maximum,40,8.1,7,7,91,129,84,37.7,128,1.8,Peak observed level triggering corresponding warnings or alerts,,,,,
