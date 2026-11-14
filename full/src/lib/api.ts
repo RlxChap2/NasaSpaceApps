@@ -1,5 +1,10 @@
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000';
+  process.env.NEXT_PUBLIC_API_URL ??
+  (typeof window !== 'undefined' &&
+  window.location.hostname !== 'localhost' &&
+  window.location.hostname !== '127.0.0.1'
+    ? ''
+    : 'http://localhost:8000');
 
 export type AstronautId = 'C001' | 'C002' | 'C003' | 'C004';
 export type MissionPhase = 'Pre-Flight' | 'In-Flight' | 'Post-Flight';
