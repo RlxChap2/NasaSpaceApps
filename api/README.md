@@ -1,5 +1,36 @@
-# API
+# Astronaut Health Monitoring API
 
-The website saves check-ins in the browser. Run the site from `full/`.
+FastAPI + SQLite backend for the 2026 NASA Space Apps Challenge project.
+See also [check-ins.ts](../full/src/components/dashboard/check-ins.ts) in the frontend for the planned integration point.
 
-The [check-in repository](../full/src/components/dashboard/check-ins.ts) is the integration point for a future backend.
+## Setup (Windows PowerShell)
+
+```powershell
+cd api
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements-dev.txt
+```
+
+## Seed Database
+
+```powershell
+cd api
+python -m app.seed
+```
+
+## Run Server
+
+```powershell
+cd api
+python -m uvicorn app.main:app --reload --port 8000
+```
+
+Interactive API docs are available at `http://localhost:8000/docs`.
+
+## Run Tests
+
+```powershell
+cd api
+python -m pytest
+```

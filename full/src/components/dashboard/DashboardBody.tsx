@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowDown2, ArrowLeft, ArrowRight, ExportSquare, TickCircle } from 'iconsax-react';
 import crewLog from '@/data/crew-log.json';
+import type { VitalsRecord } from '@/lib/api';
 import { metrics, nasa, needsReview, type CheckIn } from './check-ins';
 import { getCrewRows } from './CrewStatsTable';
 import CrewStatus from './CrewStatus';
@@ -29,16 +30,29 @@ const archiveCharts = {
   ],
 } as const;
 
-export default function DashboardBody({ records }: { records: CheckIn[] }) {
+export default function DashboardBody({ records, backendVitals }: { records: CheckIn[]; backendVitals?: VitalsRecord[] }) {
   const [selected, setSelected] = useState<System>('heart');
   const [hovered, setHovered] = useState<System>();
   const active = hovered ?? selected;
   const [crewId, setCrewId] = useState('C001');
   const [angle, setAngle] = useState(0);
-  const rows = getCrewRows(records);
+  const rows = getCrewRows(records, backendVitals);
   const member = rows.find(row => row.id === crewId) ?? rows[0];
   const local = member.id === 'C001';
-  const history = local ? [] : crewLog.filter(record => record.crew === member.id);
+  const apiHistory = !local && backendVitals?.length
+    ? backendVitals
+        .filter(record => record.astronaut_id === member.id)
+        .map(record => ({
+          day: record.mission_day,
+          heart: String(record.heart_rate_bpm),
+          systolic: String(record.systolic_bp_mmhg),
+          diastolic: String(record.diastolic_bp_mmhg),
+          sleep: String(record.sleep_hours),
+          stress: String(record.stress_score_0_10),
+          mood: String(record.mood_unhappiness_0_10),
+        }))
+    : [];
+  const history = local ? [] : apiHistory.length ? apiHistory : crewLog.filter(record => record.crew === member.id);
   const latest = records.at(-1);
   const previous = records.at(-2);
   const sourceRecord = history.at(-1);

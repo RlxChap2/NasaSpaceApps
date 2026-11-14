@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState, useSyncExternalStore, type FormEvent } from 'react';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore, type FormEvent } from 'react';
 import { ArrowDown, ArrowUp, BatteryEmpty, ExportSquare, Happyemoji, HeartSearch, InfoCircle, Minus, Moon, Radar2, TickCircle } from 'iconsax-react';
+import { createVitals, fetchHealth, fetchVitals, nextMissionDay, resetVitals, type AstronautId, type HealthResponse, type MissionPhase, type VitalsRecord } from '@/lib/api';
 import MissionLink from '../MissionLink';
 import { DashboardButton, DashboardCheckbox, DashboardInput, DashboardSelect, DashboardTextarea } from './DashboardControls';
 import { checkInRepository, metrics, needsReview, readCheckIns, readMeasurements, type CheckIn, type MetricId } from './check-ins';
@@ -26,6 +27,34 @@ export default function CrewDashboard({ view }: { view: 'overview' | 'check-in' 
     try { return readCheckIns(snapshot); } catch { return readCheckIns(null); }
   }, [snapshot]);
   const latest = records.at(-1);
+  const [backendVitals, setBackendVitals] = useState<VitalsRecord[]>([]);
+  const [apiHealth, setApiHealth] = useState<HealthResponse | null>(null);
+
+  const refreshBackend = useCallback(async () => {
+    try {
+      const [vitals, health] = await Promise.all([fetchVitals(), fetchHealth()]);
+      setBackendVitals(vitals);
+      setApiHealth(health);
+    } catch {
+      setApiHealth(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    Promise.all([fetchVitals(), fetchHealth()])
+      .then(([vitals, health]) => {
+        if (!active) return;
+        setBackendVitals(vitals);
+        setApiHealth(health);
+      })
+      .catch(() => {
+        if (active) setApiHealth(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <main className={view === 'overview' ? `${styles.page} ${styles.overview}` : styles.page}>
@@ -39,20 +68,21 @@ export default function CrewDashboard({ view }: { view: 'overview' | 'check-in' 
           <Link href="/dashboard/crew" aria-current={view === 'crew' ? 'page' : undefined}>Crew Profiles</Link>
           <Link href="/dashboard/research" aria-current={view === 'research' ? 'page' : undefined}>Research &amp; Evidence</Link>
         </nav>
+        {apiHealth && <span className={styles.badge} title="FastAPI + SQLite connected">API · {apiHealth.totalDailyRecords} records</span>}
       </header>
       <div className={styles.content}>
-        {view === 'overview' && <Overview records={records} latest={latest} />}
-        {view === 'check-in' && <CheckInForm hasLocalRecords={snapshot !== null} />}
-        {view === 'body' && <BodyExplorer records={records} />}
+        {view === 'overview' && <Overview records={records} latest={latest} backendVitals={backendVitals} />}
+        {view === 'check-in' && <CheckInForm hasLocalRecords={snapshot !== null} backendVitals={backendVitals} onBackendChange={refreshBackend} />}
+        {view === 'body' && <BodyExplorer records={records} backendVitals={backendVitals} />}
         {view === 'trends' && <HealthHistory records={records} />}
         {view === 'research' && <ResearchEvidence />}
-        {view === 'crew' && <CrewProfiles records={records} />}
+        {view === 'crew' && <CrewProfiles records={records} backendVitals={backendVitals} />}
       </div>
     </main>
   );
 }
 
-function Overview({ records, latest }: { records: CheckIn[]; latest?: CheckIn }) {
+function Overview({ records, latest, backendVitals }: { records: CheckIn[]; latest?: CheckIn; backendVitals: VitalsRecord[] }) {
   const [metricId, setMetric] = useState<MetricId>('sleep');
   const [period, setPeriod] = useState(7);
   const metric = metrics.find(item => item.id === metricId)!;
@@ -63,7 +93,7 @@ function Overview({ records, latest }: { records: CheckIn[]; latest?: CheckIn })
   const flagged = latest ? metrics.filter(item => needsReview(item.id, latest[item.id], previous?.[item.id])) : [];
   const average = recent.length ? recent.reduce((sum, entry) => sum + entry[metricId], 0) / recent.length : undefined;
   const entriesWithFlags = records.filter(record => record.followUp);
-  const crewRows = getCrewRows(records);
+  const crewRows = getCrewRows(records, backendVitals);
 
   return (
     <>
@@ -131,14 +161,28 @@ function Overview({ records, latest }: { records: CheckIn[]; latest?: CheckIn })
   );
 }
 
-function CheckInForm({ hasLocalRecords }: { hasLocalRecords: boolean }) {
+function CheckInForm({
+  hasLocalRecords,
+  backendVitals,
+  onBackendChange,
+}: {
+  hasLocalRecords: boolean;
+  backendVitals: VitalsRecord[];
+  onBackendChange: () => Promise<void>;
+}) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const [saved, setSaved] = useState<CheckIn>();
+  const [submitting, setSubmitting] = useState(false);
+  const [saved, setSaved] = useState<{ checkIn: CheckIn; backendRecord?: VitalsRecord }>();
   const [invalid, setInvalid] = useState<Partial<Record<MetricId, string>>>({});
   const [confirmDemo, setConfirmDemo] = useState(false);
+  const [astronautId, setAstronautId] = useState<AstronautId>('C001');
+  const [missionPhase, setMissionPhase] = useState<MissionPhase>('In-Flight');
+  const [customMissionDay, setCustomMissionDay] = useState<string | null>(null);
+  const suggestedMissionDay = nextMissionDay(backendVitals, astronautId, missionPhase);
+  const missionDay = customMissionDay ?? suggestedMissionDay;
 
-  function save(event: FormEvent<HTMLFormElement>) {
+  async function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError('');
     setMessage('');
@@ -159,45 +203,100 @@ function CheckInForm({ hasLocalRecords }: { hasLocalRecords: boolean }) {
       return;
     }
     const form = new FormData(formElement);
+    setSubmitting(true);
     try {
       const values = readMeasurements(form);
-      setSaved(checkInRepository.save(values, String(form.get('notes') ?? '').trim(), form.has('followUp')));
+      const notes = String(form.get('notes') ?? '').trim();
+      const followUp = form.has('followUp');
+      const backendRecord = await createVitals({
+        astronaut_id: astronautId,
+        mission_phase: missionPhase,
+        mission_day: String(form.get('missionDay') ?? missionDay).trim(),
+        sleep_hours: values.sleep,
+        stress_score_0_10: Number(((values.fatigue - 1) * 2.5).toFixed(1)),
+        mood_unhappiness_0_10: Number(((5 - values.mood) * 2.5).toFixed(1)),
+        heart_rate_bpm: values.heart,
+        systolic_bp_mmhg: Number(form.get('systolic') || 115),
+        diastolic_bp_mmhg: Number(form.get('diastolic') || 74),
+        body_temp_c: Number(form.get('temperature') || 36.9),
+        blood_sugar_mg_dl: Number(form.get('glucose') || 90),
+        cabin_co2_mmhg: Number(form.get('co2') || 0.8),
+      });
+      const checkIn: CheckIn = astronautId === 'C001'
+        ? checkInRepository.save(values, notes, followUp)
+        : {
+            ...values,
+            day: Number(backendRecord.record_id.replace(/\D+/g, '')) || 41,
+            recordedAt: new Date().toISOString(),
+            notes,
+            followUp,
+            source: 'manual',
+          };
+      await onBackendChange();
+      setCustomMissionDay(null);
+      setSaved({ checkIn, backendRecord });
     } catch (issue) {
-      setError(issue instanceof Error && issue.name === 'Error' ? issue.message : 'Unable to save in this browser. Your check-in was not saved.');
+      setError(issue instanceof Error ? issue.message : 'Unable to save check-in to the backend API.');
+    } finally {
+      setSubmitting(false);
     }
   }
 
-  function loadDemo() {
+  async function loadDemo() {
     setError('');
+    setSubmitting(true);
     try {
+      await resetVitals();
       checkInRepository.loadDemo();
+      await onBackendChange();
       setSaved(undefined);
       setConfirmDemo(false);
-      setMessage('Demo scenario loaded. The overview now shows the simulated records.');
-    } catch {
-      setError('Unable to load the demo in this browser.');
+      setMessage('Demo scenario reset on backend SQLite (40 baseline records) and browser storage.');
+    } catch (issue) {
+      setError(issue instanceof Error ? issue.message : 'Unable to reset the demo scenario.');
+    } finally {
+      setSubmitting(false);
     }
   }
 
   return (
     <div className={styles.checkIn}>
       <div className={styles.heading}>
-        <div><h1>Daily Health Check-in</h1><p>Record your daily measurements to keep track of changes over time.</p></div>
+        <div><h1>Daily Health Check-in</h1><p>Record daily astronaut measurements and evaluate them with the NASA-STD-3001 backend engine.</p></div>
       </div>
       {saved ? (
         <section className={`${styles.panel} ${styles.savedCheckIn}`} aria-label="Saved check-in">
           <div className={styles.savedHeader}>
             <TickCircle size={26} color="currentColor" variant="Bold" aria-hidden="true" />
             <div>
-              <h2>Check-in saved on this device</h2>
-              <p role="status">Mission Day {saved.day} · <time dateTime={saved.recordedAt}>{dateTime.format(new Date(saved.recordedAt))} UTC</time></p>
+              <h2>Check-in saved to FastAPI + SQLite{saved.backendRecord ? ` (${saved.backendRecord.record_id})` : ''}</h2>
+              <p role="status">
+                {saved.backendRecord ? `${saved.backendRecord.astronaut_id} · ${saved.backendRecord.mission_phase} ${saved.backendRecord.mission_day}` : `Mission Day ${saved.checkIn.day}`} · <time dateTime={saved.checkIn.recordedAt}>{dateTime.format(new Date(saved.checkIn.recordedAt))} UTC</time>
+              </p>
             </div>
           </div>
+          {saved.backendRecord && (
+            <div className={styles.savedNoteBlock}>
+              <h3>Backend Alert Evaluation: {saved.backendRecord.overall_alert_status}</h3>
+              <p className={styles.savedNotes}>{saved.backendRecord.recommended_action}</p>
+              <p className={styles.muted}>{saved.backendRecord.data_label}</p>
+              {saved.backendRecord.triggered_alerts.length > 0 && (
+                <ul className={styles.followups}>
+                  {saved.backendRecord.triggered_alerts.map(alert => (
+                    <li key={alert.indicator_id}>
+                      <strong>[{alert.severity}] {alert.indicator}:</strong> {alert.value} {alert.unit} (green: {alert.green_range}) — {alert.countermeasure}{' '}
+                      <a href={alert.source_url} target="_blank" rel="noreferrer">Source</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
           <dl className={`${styles.readings} ${styles.savedReadings}`}>{metrics.map(metric => (
-            <div key={metric.id}><dt>{metric.name}</dt><dd>{saved[metric.id]} {metric.unit}</dd></div>
+            <div key={metric.id}><dt>{metric.name}</dt><dd>{saved.checkIn[metric.id]} {metric.unit}</dd></div>
           ))}</dl>
-          {saved.notes && <div className={styles.savedNoteBlock}><h3>Notes</h3><p className={styles.savedNotes}>{saved.notes}</p></div>}
-          {saved.followUp && <p className={styles.muted}>Flagged for follow-up</p>}
+          {saved.checkIn.notes && <div className={styles.savedNoteBlock}><h3>Notes</h3><p className={styles.savedNotes}>{saved.checkIn.notes}</p></div>}
+          {saved.checkIn.followUp && <p className={styles.muted}>Flagged for follow-up</p>}
           <div className={styles.actions}>
             <MissionLink href="/dashboard">Back to Dashboard</MissionLink>
             <button className={styles.secondary} type="button" onClick={() => setSaved(undefined)}>Start another check-in</button>
@@ -206,6 +305,18 @@ function CheckInForm({ hasLocalRecords }: { hasLocalRecords: boolean }) {
       ) : (
         <form className={styles.form} onSubmit={save} noValidate>
           <div className={styles.formGrid}>
+            <DashboardSelect label="Crew Member" name="astronautId" value={astronautId} onChange={event => { setAstronautId(event.target.value as AstronautId); setCustomMissionDay(null); }}>
+              <option value="C001">C001 · Alex Morgan</option>
+              <option value="C002">C002 · Jordan Lee</option>
+              <option value="C003">C003 · Sam Rivera</option>
+              <option value="C004">C004 · Taylor Chen</option>
+            </DashboardSelect>
+            <DashboardSelect label="Mission Phase" name="missionPhase" value={missionPhase} onChange={event => { setMissionPhase(event.target.value as MissionPhase); setCustomMissionDay(null); }}>
+              <option value="Pre-Flight">Pre-Flight (L-n)</option>
+              <option value="In-Flight">In-Flight (FDn)</option>
+              <option value="Post-Flight">Post-Flight (R+n)</option>
+            </DashboardSelect>
+            <DashboardInput label="Mission Day" name="missionDay" type="text" value={missionDay} onChange={event => setCustomMissionDay(event.target.value)} required />
             {metrics.map(metric => (
               <div key={metric.id} className={styles.checkInField}>
                 {metric.max === 5 ? (
@@ -218,14 +329,19 @@ function CheckInForm({ hasLocalRecords }: { hasLocalRecords: boolean }) {
                 {invalid[metric.id] && <p id={`error-${metric.id}`} className={styles.fieldError} role="alert">{invalid[metric.id]}</p>}
               </div>
             ))}
+            <DashboardInput label="Systolic BP (mmHg)" name="systolic" type="number" min={40} max={260} step={1} defaultValue={115} />
+            <DashboardInput label="Diastolic BP (mmHg)" name="diastolic" type="number" min={20} max={180} step={1} defaultValue={74} />
+            <DashboardInput label="Body Temp (°C)" name="temperature" type="number" min={30} max={45} step={0.1} defaultValue={36.9} />
+            <DashboardInput label="Blood Sugar (mg/dL)" name="glucose" type="number" min={20} max={600} step={1} defaultValue={90} />
+            <DashboardInput label="Cabin CO₂ (mmHg)" name="co2" type="number" min={0} max={20} step={0.1} defaultValue={0.8} />
           </div>
           <DashboardTextarea label="Notes (optional)" name="notes" maxLength={1000} />
           <DashboardCheckbox label="Flag for follow-up" name="followUp" />
           <div className={styles.actions}>
-            <DashboardButton type="submit">Save Check-in</DashboardButton>
-            <button className={styles.secondary} type="button" onClick={() => hasLocalRecords ? setConfirmDemo(true) : loadDemo()}>Load Demo Scenario</button>
+            <DashboardButton type="submit" disabled={submitting}>{submitting ? 'Saving...' : 'Save Check-in'}</DashboardButton>
+            <button className={styles.secondary} type="button" disabled={submitting} onClick={() => hasLocalRecords ? setConfirmDemo(true) : loadDemo()}>Load Demo Scenario</button>
           </div>
-          {confirmDemo && <div className={styles.confirm}><p>Replace the check-ins stored on this device with the demo scenario?</p><button type="button" onClick={loadDemo}>Replace with demo</button> <button type="button" onClick={() => setConfirmDemo(false)}>Cancel</button></div>}
+          {confirmDemo && <div className={styles.confirm}><p>Reset the backend database and browser storage back to the 40-record baseline demo?</p><button type="button" onClick={loadDemo}>Replace with demo</button> <button type="button" onClick={() => setConfirmDemo(false)}>Cancel</button></div>}
           {error && <p role="alert" className={styles.review}>{error}</p>}
           {message && <p role="status">{message} <Link href="/dashboard">Open overview</Link></p>}
         </form>

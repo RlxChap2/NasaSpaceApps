@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Profile2User } from 'iconsax-react';
 import crewLog from '@/data/crew-log.json';
+import type { VitalsRecord } from '@/lib/api';
 import { metrics, needsReview, type CheckIn } from './check-ins';
 import styles from './CrewDashboard.module.css';
 import CrewStatus, { type Status } from './CrewStatus';
@@ -13,17 +14,53 @@ const crew = [
 
 type CrewRow = { id: string; name: string; day: string; heart?: number | string; sleep?: number | string; fatigue?: number; mood?: number; status: Status; pressure?: string; temperature?: string; glucose?: string; notes?: string };
 
-export function getCrewRows(records: CheckIn[]): CrewRow[] {
+function mapBackendStatus(overallStatus: string): Status {
+  if (overallStatus.startsWith('RED')) return 'critical';
+  if (overallStatus.startsWith('GREEN')) return 'nominal';
+  return 'review';
+}
+
+export function getCrewRows(records: CheckIn[], backendVitals?: VitalsRecord[]): CrewRow[] {
   const latest = records.at(-1);
   const previous = records.at(-2);
+  const c001Backend = backendVitals?.filter(record => record.astronaut_id === 'C001').at(-1);
+  const c001LocalStatus: Status = !latest
+    ? 'missing'
+    : latest.followUp || metrics.some(metric => needsReview(metric.id, latest[metric.id], previous?.[metric.id]))
+      ? 'review'
+      : 'nominal';
+  const c001Status: Status =
+    c001Backend && c001Backend.data_label.startsWith('USER INPUT')
+      ? mapBackendStatus(c001Backend.overall_alert_status)
+      : c001LocalStatus;
+
   return [
     {
       id: 'C001', name: 'Alex Morgan',
-      day: latest ? String(latest.day) : '—', heart: latest?.heart, sleep: latest?.sleep, fatigue: latest?.fatigue, mood: latest?.mood,
+      day: c001Backend && c001Backend.data_label.startsWith('USER INPUT') ? c001Backend.mission_day : latest ? String(latest.day) : '—',
+      heart: c001Backend && c001Backend.data_label.startsWith('USER INPUT') ? c001Backend.heart_rate_bpm : latest?.heart,
+      sleep: c001Backend && c001Backend.data_label.startsWith('USER INPUT') ? c001Backend.sleep_hours : latest?.sleep,
+      fatigue: latest?.fatigue, mood: latest?.mood,
+      pressure: c001Backend ? `${c001Backend.systolic_bp_mmhg}/${c001Backend.diastolic_bp_mmhg} mmHg` : undefined,
+      temperature: c001Backend ? `${c001Backend.body_temp_c} °C` : undefined,
+      glucose: c001Backend ? `${c001Backend.blood_sugar_mg_dl} mg/dL` : undefined,
       notes: latest?.notes,
-      status: !latest ? 'missing' : latest.followUp || metrics.some(metric => needsReview(metric.id, latest[metric.id], previous?.[metric.id])) ? 'review' : 'nominal',
+      status: c001Status,
     },
     ...crew.map((member): CrewRow => {
+      const apiEntry = backendVitals?.filter(record => record.astronaut_id === member.id).at(-1);
+      if (apiEntry) {
+        return {
+          ...member,
+          day: apiEntry.mission_day,
+          heart: apiEntry.heart_rate_bpm,
+          sleep: apiEntry.sleep_hours,
+          pressure: `${apiEntry.systolic_bp_mmhg}/${apiEntry.diastolic_bp_mmhg} mmHg`,
+          temperature: `${apiEntry.body_temp_c} °C`,
+          glucose: `${apiEntry.blood_sugar_mg_dl} mg/dL`,
+          status: mapBackendStatus(apiEntry.overall_alert_status),
+        };
+      }
       const entry = crewLog.filter(record => record.crew === member.id).at(-1);
       return {
         ...member, day: entry?.day ?? '—', heart: entry?.heart, sleep: entry?.sleep,
