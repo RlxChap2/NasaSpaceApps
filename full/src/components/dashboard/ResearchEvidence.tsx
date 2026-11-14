@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { fetchOsdrFiles, fetchThresholds, type OsdrFileRecord, type ThresholdRecord } from '@/lib/api';
 import MissionLink from '../MissionLink';
 import { evidence } from './evidence';
 import styles from './CrewDashboard.module.css';
@@ -20,6 +24,23 @@ const groups = [
 ];
 
 export default function ResearchEvidence() {
+  const [thresholds, setThresholds] = useState<ThresholdRecord[]>([]);
+  const [osdrFiles, setOsdrFiles] = useState<OsdrFileRecord[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    Promise.all([fetchThresholds(), fetchOsdrFiles()])
+      .then(([thresholdRows, osdrRows]) => {
+        if (!active) return;
+        setThresholds(thresholdRows);
+        setOsdrFiles(osdrRows);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <div className={styles.evidence}>
       <div className={styles.heading}>
@@ -49,9 +70,69 @@ export default function ResearchEvidence() {
           </div>
         </section>
       ))}
+      {thresholds.length > 0 && (
+        <section className={styles.panel}>
+          <h2>NASA-STD-3001 &amp; Inspiration4 Reference Thresholds ({thresholds.length})</h2>
+          <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="NASA reference thresholds">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Indicator</th>
+                  <th scope="col">Green</th>
+                  <th scope="col">Yellow</th>
+                  <th scope="col">Red</th>
+                  <th scope="col">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {thresholds.map(item => (
+                  <tr key={item.indicator_id}>
+                    <th scope="row">{item.indicator_id}</th>
+                    <td>{item.health_or_cabin_indicator} ({item.unit})</td>
+                    <td>{item.normal_green_range}</td>
+                    <td>{item.warning_yellow_range}</td>
+                    <td>{item.critical_red_threshold}</td>
+                    <td><a href={item.source_url} target="_blank" rel="noreferrer">{item.source_label}</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
+      {osdrFiles.length > 0 && (
+        <section className={styles.panel}>
+          <h2>Verified NASA OSDR &amp; Benchmark Repository ({osdrFiles.length})</h2>
+          <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="NASA OSDR files">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">File ID</th>
+                  <th scope="col">Study</th>
+                  <th scope="col">File</th>
+                  <th scope="col">Origin Label</th>
+                  <th scope="col">Source</th>
+                </tr>
+              </thead>
+              <tbody>
+                {osdrFiles.map(file => (
+                  <tr key={file.file_id}>
+                    <th scope="row">{file.file_id}</th>
+                    <td>{file.repository_and_study}</td>
+                    <td>{file.exact_file_name}</td>
+                    <td>{file.data_origin_label}</td>
+                    <td><a href={file.source_url} target="_blank" rel="noreferrer">{file.source_label}</a></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
       <section className={styles.panel}>
         <h2>Data &amp; Limitations</h2>
-        <p>Demo measurements are simulated and do not come from NASA. Manual entries are saved locally in this browser. Crew State Health is a research prototype and is not intended for medical diagnosis or treatment.</p>
+        <p>Demo measurements are simulated and calibrated to NASA-STD-3001 and Inspiration4 findings. Manual entries are evaluated and persisted by the local FastAPI + SQLite backend. Crew State Health is a research prototype and is not intended for medical diagnosis or treatment.</p>
       </section>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import crewLog from '@/data/crew-log.json';
+import type { VitalsRecord } from '@/lib/api';
 import MissionLink from '../MissionLink';
 import { getCrewRows } from './CrewStatsTable';
 import CrewStatus from './CrewStatus';
@@ -19,15 +20,33 @@ const archivedMetrics = [
   { id: 'co2', name: 'Cabin CO₂', unit: 'mmHg' },
 ] as const;
 
-export default function CrewProfiles({ records }: { records: CheckIn[] }) {
+export default function CrewProfiles({ records, backendVitals }: { records: CheckIn[]; backendVitals?: VitalsRecord[] }) {
   const [id, setId] = useState('C001');
   const [indicator, setIndicator] = useState('heart');
-  const rows = getCrewRows(records);
+  const rows = getCrewRows(records, backendVitals);
   const member = rows.find(row => row.id === id) ?? rows[0];
   const local = member.id === 'C001';
-  const archive = crewLog.filter(record => record.crew === member.id);
+  const apiArchive = backendVitals?.filter(record => record.astronaut_id === member.id) ?? [];
+  const archive = apiArchive.length
+    ? apiArchive.map(record => ({
+        record: record.record_id,
+        day: record.mission_day,
+        heart: record.heart_rate_bpm,
+        sleep: record.sleep_hours,
+        systolic: record.systolic_bp_mmhg,
+        diastolic: record.diastolic_bp_mmhg,
+        temperature: record.body_temp_c,
+        glucose: record.blood_sugar_mg_dl,
+        stress: record.stress_score_0_10,
+        mood: record.mood_unhappiness_0_10,
+        co2: record.cabin_co2_mmhg,
+        source: record.data_label.startsWith('USER INPUT') ? 'manual' : 'simulated',
+      }))
+    : crewLog
+        .filter(record => record.crew === member.id)
+        .map(record => ({ ...record, source: 'simulated' }));
   const history = local ? records.map(record => ({ ...record, day: String(record.day), key: String(record.day) }))
-    : archive.map(record => ({ ...record, key: record.record, source: 'simulated' }));
+    : archive.map(record => ({ ...record, key: record.record }));
   const latest = records.at(-1);
   const previous = records.at(-2);
   const flagged = local && latest ? metrics.filter(metric => needsReview(metric.id, latest[metric.id], previous?.[metric.id])) : [];
