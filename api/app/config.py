@@ -1,8 +1,12 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-DB_PATH = DATA_DIR / "astronaut_health.db"
+DB_PATH = Path(
+    os.environ.get("DB_PATH")
+    or ("/tmp/astronaut_health.db" if os.environ.get("VERCEL") else str(DATA_DIR / "astronaut_health.db"))
+)
 INPUT_DIR = DATA_DIR / "input"
 OSDR_DIR = DATA_DIR / "osdr"
 
